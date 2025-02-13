@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import GetAll,GetById,StoreData,UpdateData,UpdateDataFull,main_method
+from .views import GetAll,GetById,StoreData,UpdateData,UpdateDataFull,main_method,DeleteData
 urlpatterns = [
 
     path('',main_method,name="main"),
@@ -9,4 +9,6 @@ urlpatterns = [
     path('StoreData/',StoreData,name="StoreData"),
     path('UpdateData/<str:id>/',UpdateData,name="UpdateData"),
     path('UpdateDataFull/<str:id>/',UpdateDataFull,name="StoreDataFull"),
+    path('DeleteData/<str:id>/', DeleteData, name='DeleteData')
+,
 ]

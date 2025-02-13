@@ -84,6 +84,16 @@ def main_method(request):
         "3": "path('StoreData/', StoreData, name='StoreData')",
         "4": "path('UpdateData/<str:id>/', UpdateData, name='UpdateData')",
         "5": "path('UpdateDataFull/<str:id>/', UpdateDataFull, name='StoreDataFull')",
+        "6": "path('DeleteData/<str:id>/', DeleteData, name='DeleteData')",
+
     })
 
+@api_view(['DELETE'])
+def DeleteData(request, id):
+    try:
+        data = Items.objects.get(id=id)
+        data.delete()
+        return Response({"message": "Item deleted successfully"}, status=200)
+    except Items.DoesNotExist:
+        return Response({"error": "Data not found"}, status=404)
     
